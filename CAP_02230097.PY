@@ -6,11 +6,11 @@
  #REFERENces
  #Python, R. (2023, November 6). Make your first Python game: rock, paper, scissors! https://realpython.com/python-rock-paper-scissors/
  #ROCK PAPER SCISSORS game in Python[Video]. YouTube. https://www.youtube.com/watch?v=fn68QNcatfo
- #https://www.dataquest.io/blog/read-file-python/#:~:text=Python%20provides%20a%20built%2Din,we%20can%20manipulate%20its%20content
+ #https://www.dataquest.io/blog/read-file-python/#:~:text=Python%20provides%20a%20built%2Din,we%20can%20manipulate%20its%20content c
  #http://link.to.an.article/video.com
  ################################
  #SOLUTION
- #SolutionScore: 50259
+ #SolutionScore: 50169
  ################################
 
 def read_input(game_filename):     #This function takes a filename (game_filename) as input and reads the content of the file.
@@ -25,20 +25,31 @@ def calculate_score(outcome_data): #this function takes 'outcome_data' list gene
     final_score = 0 #initialized avaribale to keep track of the total score.
     for computer_choice, user_choice in outcome_data:
         if computer_choice == "A":
-            choice_score = 1
+            if user_choice == "X":
+                final_score += 3
+            elif user_choice == "Y":
+                final_score += 4
+            elif user_choice == "Z":
+                final_score += 8    
+    
         elif computer_choice == "B":
-            choice_score = 2
-        elif computer_choice == "C":
-            choice_score  = 3
+            if user_choice == "X":
+                final_score += 1
+            elif user_choice == "Y":
+                final_score += 5
+            elif user_choice == "Z":
+                final_score += 9        
 
-        if user_choice == "X":
-            decision_score = 0
-        elif user_choice == "Y":
-            decision_score = 3
-        elif user_choice =="Z":
-            decision_score = 6
+          
+        elif computer_choice == "C":
+           if user_choice == "X":
+            final_score += 2
+           elif user_choice == "Y":
+            final_score += 6
+           elif user_choice == "Z":
+            final_score += 7
         
-        final_score += choice_score + decision_score #calculates the final score.
+     #calculates the final score.
     return final_score
 
 file = read_input ("input_7_cap1.txt") 
